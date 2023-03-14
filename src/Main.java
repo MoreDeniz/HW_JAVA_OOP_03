@@ -1,5 +1,57 @@
+/*
+Написать программу на языках Java, в которой идёт со следующими геометрическими фигурами:
+1.Треугольник
+2.Квадрат
+3.Прямоугольник
+4.Круг
+В программе имеется массив фигур, с которым можно сделать следующие операции:
+1.Добавить новую фигуру
+2.Посчитать периметр у всех фигур
+3.Посчитать площадь у всех фигур
+Для фигуры использовать базовый абстрактный класс фигуры, у которого есть методы
+посчитать периметр и посчитать площадь фигуры.
+Создать класс-коллекцию фигур В классе-коллекции реализовать методы:
+1. Вывода информации о всех периметах, площадях и длиннах окружности всех фигур, где это возможно,
+2. добавления новой фигуры,
+3. удаления фигуры,
+4. изменения фигуры по индексу,
+5. сортировки по площади, вывод информации о всех фигурах.
+При создании фигур необходимо осуществлять проверку входных данных на возможность создания
+данной фигуры и в случае ошибки выдавать соответствующие сообщения.
+Перодумать собственную иерархию исключений
+ */
+
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+    private static int i;
+
+    public static void main(String[] args) throws Exception {
+        Figures figures = new Figures();
+
+        figures.addFigure(new Triangular(5, 4, 3));
+        figures.addFigure(new Rectangular(4, 5));
+        figures.addFigure(new Square(5));
+        figures.addFigure(new Circle(7));
+        System.out.println("Список фигур: ");
+        figures.showInfo();
+        System.out.println("==========================================================");
+        System.out.println("Добавление новой фигуры: ");
+        figures.addNewFigure(figures);
+        System.out.println("Фигура добавлена!\n");
+        System.out.println("Список фигур: ");
+        figures.showInfo();
+        System.out.println("==========================================================");
+        System.out.println("Список фигур после сортировки: ");
+        figures.sortByArea();
+        figures.showInfo();
+        System.out.println("==========================================================");
+        System.out.println("Заменили вторую фигуру на круг радиусом 10: ");
+        figures.changeFigure(1, new Circle(10));
+        figures.showInfo();
+        System.out.println("==========================================================");
+        System.out.println("Удалили вторую фигуру: ");
+        figures.removeFigure(1);
+        figures.showInfo();
     }
 }
