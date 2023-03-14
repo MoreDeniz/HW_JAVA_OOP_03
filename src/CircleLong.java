@@ -1,3 +1,3 @@
-public interface CircieLong {
-    public Double getCircleLong();
+public interface CircleLong {
+    public double circleLong();
 }
